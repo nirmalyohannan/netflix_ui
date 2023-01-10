@@ -11,7 +11,7 @@ class WidgetAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        gapWidth20,
+        kGapWidth20,
         Expanded(
             child: Text(
           title,
@@ -19,16 +19,16 @@ class WidgetAppBar extends StatelessWidget {
         )),
         const Icon(
           Icons.cast,
-          color: iconColor,
+          color: colorIcon,
           size: 30,
         ),
-        gapWidth20,
+        kGapWidth20,
         Container(
           height: 40,
           width: 40,
           color: Colors.blue,
         ),
-        gapWidth20,
+        kGapWidth20,
       ],
     );
   }

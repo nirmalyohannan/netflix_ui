@@ -26,10 +26,10 @@ class ScreenDownloads extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(children: [
-          gapHeight10,
+          kGapHeight10,
           const _SmartDownloads(),
-          gapHeight20,
-          gapHeight10,
+          kGapHeight20,
+          kGapHeight10,
           const IntroDownloadsDescription(),
           _StackedImages(size: size, imageUrls: _imageUrls),
           const _SetUpButton(),
@@ -56,7 +56,7 @@ class IntroDownloadsDescription extends StatelessWidget {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
         ),
-        gapHeight20,
+        kGapHeight20,
         const Text(
           "We'll download a personalised selection of \n movies and shows for you, so there's \nalways something to watch on your\n device.",
           textAlign: TextAlign.center,
@@ -78,7 +78,7 @@ class _SeeWhatButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-        color: buttonColorWhite,
+        color: colorButtonWhite,
         onPressed: () {},
         child: const Text(
           "See what you can download",
@@ -99,13 +99,13 @@ class _SetUpButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: MaterialButton(
-        color: buttonColor,
+        color: colorButton,
         onPressed: () {},
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         child: const Text(
           "Set Up",
           style: TextStyle(
-              color: textColor, fontSize: 18, fontWeight: FontWeight.bold),
+              color: colorText, fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -169,9 +169,9 @@ class _SmartDownloads extends StatelessWidget {
       children: [
         const Icon(
           Icons.settings,
-          color: iconColor,
+          color: colorIcon,
         ),
-        gapWidth10,
+        kGapWidth10,
         const Text("Smart Downloads")
       ],
     );

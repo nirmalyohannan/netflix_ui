@@ -24,7 +24,7 @@ class ScreenMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: colorBackground,
       body: SafeArea(child: Obx(() => _pages[bottomNavBarIndex.value])),
       bottomNavigationBar: const BottomNavBar(),
     );

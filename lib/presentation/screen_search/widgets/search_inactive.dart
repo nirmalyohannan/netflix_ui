@@ -12,15 +12,15 @@ class WidgetSearchInactive extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          gapHeight10,
+          kGapHeight10,
           const SearchTitle("Top Searches"),
-          gapHeight10,
+          kGapHeight10,
           Expanded(
             child: ListView.separated(
               shrinkWrap: true,
               itemCount: 10,
               separatorBuilder: (BuildContext context, int index) =>
-                  gapHeight10,
+                  kGapHeight10,
               itemBuilder: (BuildContext context, int index) =>
                   const TopSearchTile(),
             ),
@@ -49,7 +49,7 @@ class TopSearchTile extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        gapWidth10,
+        kGapWidth10,
         const Expanded(
           child: Text(
             "Wednesday",
@@ -58,10 +58,10 @@ class TopSearchTile extends StatelessWidget {
         ),
         const Icon(
           CupertinoIcons.play_circle,
-          color: iconColor,
+          color: colorIcon,
           size: 45,
         ),
-        gapWidth10
+        kGapWidth10
       ],
     );
   }

@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
-          backgroundColor: backgroundColor,
-          scaffoldBackgroundColor: backgroundColor,
+          backgroundColor: colorBackground,
+          scaffoldBackgroundColor: colorBackground,
           textTheme: const TextTheme(
-              bodyText1: TextStyle(color: textColor),
-              bodyText2: TextStyle(color: textColor))),
+              bodyText1: TextStyle(color: colorText),
+              bodyText2: TextStyle(color: colorText))),
       home: ScreenMain(),
     );
   }

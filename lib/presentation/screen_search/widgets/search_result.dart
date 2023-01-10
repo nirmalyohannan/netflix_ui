@@ -11,9 +11,9 @@ class WidgetSearchResult extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          gapHeight10,
+          kGapHeight10,
           const SearchTitle("Result"),
-          gapHeight10,
+          kGapHeight10,
           Expanded(
             child: GridView.count(
               shrinkWrap: true,

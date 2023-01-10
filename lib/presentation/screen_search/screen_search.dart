@@ -15,7 +15,7 @@ class ScreenSearch extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CupertinoSearchTextField(
-            style: const TextStyle(color: textColor),
+            style: const TextStyle(color: colorText),
             backgroundColor: Colors.grey[900],
             itemColor: Colors.grey,
           ),
