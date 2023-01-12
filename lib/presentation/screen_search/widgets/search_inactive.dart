@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/screen_search/widgets/search_title.dart';
+import 'package:netflix_ui/presentation/widgets/widget_title.dart';
 
 class WidgetSearchInactive extends StatelessWidget {
   const WidgetSearchInactive({super.key});
@@ -13,7 +13,7 @@ class WidgetSearchInactive extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           kGapHeight10,
-          const SearchTitle("Top Searches"),
+          const WidgetTitle("Top Searches"),
           kGapHeight10,
           Expanded(
             child: ListView.separated(
