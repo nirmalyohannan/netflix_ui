@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/widgets/widget_app_bar.dart';
+import 'package:netflix_ui/presentation/widgets/custom_app_bar.dart';
 
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({super.key});
@@ -20,7 +20,7 @@ class ScreenDownloads extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: WidgetAppBar(
+          child: CustomAppBar(
             title: "Downloads",
           )),
       body: Padding(
