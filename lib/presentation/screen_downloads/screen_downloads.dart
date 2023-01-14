@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
 import 'package:netflix_ui/presentation/widgets/custom_app_bar.dart';
+import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({super.key});
@@ -202,7 +203,7 @@ class DownloadsImage extends StatelessWidget {
         angle: angle,
         child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(imageUrl, width: size)),
+            child: CustomNetworkImage(imageUrl, width: size)),
       ),
     );
   }

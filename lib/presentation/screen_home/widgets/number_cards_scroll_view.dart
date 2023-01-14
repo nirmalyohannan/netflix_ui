@@ -19,15 +19,13 @@ class NumberCardsScrollView extends StatelessWidget {
         kGapHeight10,
         SizedBox(
           height: MediaQuery.of(context).size.width / 2.2,
-          child: Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => NumberedPosterCard(
-                      number: index + 1,
-                    ),
-                itemCount: 10),
-          ),
+          child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => NumberedPosterCard(
+                    number: index + 1,
+                  ),
+              itemCount: 10),
         )
       ],
     );

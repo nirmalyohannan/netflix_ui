@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/presentation/screen_main/screen_main.dart';
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]); //To turn off screen rotation for the app
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

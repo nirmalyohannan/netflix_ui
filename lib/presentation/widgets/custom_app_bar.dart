@@ -18,7 +18,8 @@ class CustomAppBar extends StatelessWidget {
             Expanded(
                 child: Text(
               title,
-              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: kFontSizeAppBarTitle, fontWeight: FontWeight.bold),
             )),
             const Icon(
               Icons.cast,
