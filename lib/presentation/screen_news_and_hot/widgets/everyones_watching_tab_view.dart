@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/screen_news_and_hot/widgets/coming_soon_movie_description.dart';
+import 'package:netflix_ui/presentation/screen_news_and_hot/widgets/everyones_watching_movie_description.dart';
 
-class ComingSoonTabView extends StatelessWidget {
-  const ComingSoonTabView({
+class EveryonesWatchingTabView extends StatelessWidget {
+  const EveryonesWatchingTabView({
     Key? key,
   }) : super(key: key);
 
@@ -12,9 +12,10 @@ class ComingSoonTabView extends StatelessWidget {
     return Padding(
       padding: kPaddingAll10,
       child: ListView.separated(
-          itemBuilder: (context, index) => const ComingSoonMovieDescription(),
+          itemCount: 10,
           separatorBuilder: (context, index) => kGapHeight10,
-          itemCount: 10),
+          itemBuilder: (context, index) =>
+              const EveryonesWatchingMovieDescription()),
     );
   }
 }

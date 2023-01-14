@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/presentation/screen_news_and_hot/widgets/coming_soon_tab_view.dart';
+import 'package:netflix_ui/presentation/screen_news_and_hot/widgets/everyones_watching_tab_view.dart';
 import 'package:netflix_ui/presentation/screen_news_and_hot/widgets/new_and_hot_tab_bar.dart';
 import 'package:netflix_ui/presentation/widgets/custom_app_bar.dart';
 
@@ -22,7 +23,7 @@ class ScreenNewsAndHot extends StatelessWidget {
           body: TabBarView(
             children: [
               ComingSoonTabView(),
-              Text("Everyone Watching TabView"),
+              EveryonesWatchingTabView(),
             ],
           )),
     );

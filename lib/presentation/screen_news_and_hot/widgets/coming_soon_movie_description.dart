@@ -3,8 +3,8 @@ import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
-class ComingSoonMovieInfo extends StatelessWidget {
-  const ComingSoonMovieInfo({
+class ComingSoonMovieDescription extends StatelessWidget {
+  const ComingSoonMovieDescription({
     Key? key,
   }) : super(key: key);
 
@@ -75,7 +75,8 @@ class _RightSideMovieSection extends StatelessWidget {
           ),
           kGapHeight10,
           const Text(
-              "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.")
+            "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
+          )
         ],
       ),
     );
