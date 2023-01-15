@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
+import 'package:netflix_ui/logic/screen_home/loop_main_poster.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/cards_scroll_view.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/home_screen_app_bar.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/home_screen_main_poster.dart';

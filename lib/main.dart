@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
+import 'package:netflix_ui/logic/screen_home/loop_main_poster.dart';
 import 'package:netflix_ui/presentation/screen_main/screen_main.dart';
 
 void main() {

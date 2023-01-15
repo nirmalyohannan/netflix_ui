@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/presentation/screen_home/widgets/profile_picture.dart';
+import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.title, this.bottom});
@@ -27,11 +29,7 @@ class CustomAppBar extends StatelessWidget {
               size: 30,
             ),
             kGapWidth20,
-            Container(
-              height: 40,
-              width: 40,
-              color: Colors.blue,
-            ),
+            const ProfilePicture(),
             kGapWidth20,
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/presentation/screen_home/widgets/profile_picture.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({
@@ -62,11 +63,7 @@ class HomeScreenAppBarSection1 extends StatelessWidget {
           size: 30,
         ),
         kGapWidth20,
-        Container(
-          height: 40,
-          width: 40,
-          color: Colors.blue,
-        ),
+        const ProfilePicture(),
         kGapWidth20,
       ],
     );
