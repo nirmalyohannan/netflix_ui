@@ -4,8 +4,15 @@ import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/presentation/widgets/poster_card.dart';
 
 class NumberedPosterCard extends StatelessWidget {
-  const NumberedPosterCard({Key? key, required this.number}) : super(key: key);
+  const NumberedPosterCard({
+    Key? key,
+    required this.number,
+    required this.imageUrl,
+    this.height,
+  }) : super(key: key);
   final int number;
+  final String imageUrl;
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -15,9 +22,10 @@ class NumberedPosterCard extends StatelessWidget {
           width: MediaQuery.of(context).size.width /
               2.5, //to increase the width of stack more than the poster card
         ),
-        const PosterCard(
-            imageUrl:
-                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg"),
+        PosterCard(
+          imageUrl: imageUrl,
+          height: height,
+        ),
         Positioned(
           left: 0,
           child: Stack(

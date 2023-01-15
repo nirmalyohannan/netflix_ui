@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_ui/core/colors.dart';
+import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
+import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
 import 'package:netflix_ui/presentation/screen_main/screen_main.dart';
 
 void main() {
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]); //To turn off screen rotation for the app
+    getTrendingNowData();
+    getTop10TvShows();
+    loopMainPoster();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

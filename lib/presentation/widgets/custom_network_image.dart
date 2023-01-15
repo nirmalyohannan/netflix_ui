@@ -1,19 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_ui/core/colors.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:netflix_ui/presentation/widgets/shimmer_card.dart';
 
 class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage(
     this.imageUrl, {
     super.key,
     this.width,
+    this.height,
     this.fit,
     this.placeholderWidth = 200,
     this.placeholderHeight = 100,
   });
   final String imageUrl;
   final double? width;
+  final double? height;
   final BoxFit? fit;
   final double? placeholderHeight;
   final double? placeholderWidth;
@@ -22,16 +23,12 @@ class CustomNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       fit: fit,
       width: width,
+      height: height,
       imageUrl: imageUrl,
-      placeholder: (context, url) => Shimmer.fromColors(
-        baseColor: colorText.withOpacity(0.3),
-        highlightColor: colorText.withOpacity(0.4),
-        child: Container(
-          color: Colors.white,
-          height: placeholderHeight,
-          width: width ?? placeholderWidth,
-        ),
-      ),
+      placeholder: (context, url) => ShimmerCard(
+          placeholderHeight: placeholderHeight,
+          width: width,
+          placeholderWidth: placeholderWidth),
       // placeholder: (context, url) => SizedBox(
       //     width: width ?? 200,
       //     height: placeholderHeight ?? 200,

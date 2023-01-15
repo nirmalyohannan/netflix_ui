@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
+import 'package:netflix_ui/presentation/widgets/shimmer_card.dart';
 
 class HomeScreenMainPoster extends StatelessWidget {
   const HomeScreenMainPoster({
     Key? key,
+    required this.imageUrl,
   }) : super(key: key);
-
+  final String? imageUrl;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
-        CustomNetworkImage(
-          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-          width: MediaQuery.of(context).size.width,
-          placeholderHeight: 400,
-        ),
+        imageUrl == null
+            ? ShimmerCard(
+                placeholderHeight: size.width, placeholderWidth: size.width)
+            : CustomNetworkImage(
+                imageUrl!,
+                width: size.width,
+                placeholderHeight: 400,
+              ),
         const _HomeScreenMainPosterBottomOptions()
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/cards_scroll_view.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/home_screen_app_bar.dart';
@@ -14,7 +15,7 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var scrollNotifier = true.obs;
-    getTrendingNowData();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: NotificationListener<UserScrollNotification>(
@@ -33,9 +34,14 @@ class ScreenHome extends StatelessWidget {
                 ListView(
                   shrinkWrap: true,
                   children: [
-                    const HomeScreenMainPoster(),
+                    HomeScreenMainPoster(
+                      imageUrl: mainPosterUrl.value,
+                    ),
                     // const CardsScrollView(title: "Released in the Past Year"),
-                    const NumberCardsScrollView(title: "Top 10 Indian TV Show"),
+                    NumberCardsScrollView(
+                      title: "Top 10 Indian TV Show",
+                      data: top10TvShows.value,
+                    ),
                     CardsScrollView(
                       title: "Trending Now",
                       data: trendingNowModel.value,
