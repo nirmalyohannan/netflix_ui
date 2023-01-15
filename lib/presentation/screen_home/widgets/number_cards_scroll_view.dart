@@ -20,6 +20,7 @@ class NumberCardsScrollView extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.width / 2.2,
           child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => NumberedPosterCard(
