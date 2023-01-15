@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
-import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class ComingSoonMovieDescription extends StatelessWidget {

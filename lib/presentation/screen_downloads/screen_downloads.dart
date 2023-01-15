@@ -1,22 +1,19 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netflix_ui/core/colors.dart';
-import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/logic/screen_downloads/get_download_images.dart';
 import 'package:netflix_ui/presentation/widgets/custom_app_bar.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({super.key});
 
-  final List<String> _imageUrls = [
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xAG7S6X73B74CeLjo8gcVoWtunr.jpg',
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tL1pf85mtn1SEHODLetoHRGdxnN.jpg',
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bU9q9yVtxeBiC0Do27CekHXNE6D.jpg'
-  ];
-
   @override
   Widget build(BuildContext context) {
+    getDownloadsImages();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const PreferredSize(
@@ -32,7 +29,7 @@ class ScreenDownloads extends StatelessWidget {
           kGapHeight20,
           kGapHeight10,
           const IntroDownloadsDescription(),
-          _StackedImages(size: size, imageUrls: _imageUrls),
+          _StackedImages(size: size),
           const _SetUpButton(),
           const _SeeWhatButton()
         ]),
@@ -117,45 +114,44 @@ class _StackedImages extends StatelessWidget {
   const _StackedImages({
     Key? key,
     required this.size,
-    required List<String> imageUrls,
-  })  : _imageUrls = imageUrls,
-        super(key: key);
+  }) : super(key: key);
 
   final Size size;
-  final List<String> _imageUrls;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size.width,
-      height: size.width,
-      child: Center(
-        child: Stack(alignment: AlignmentDirectional.center, children: [
-          CircleAvatar(
-            radius: size.width / 3,
-            backgroundColor: Colors.grey[800],
+    return Obx(() => SizedBox(
+          width: size.width,
+          height: size.width,
+          child: Center(
+            child: downloadImagesModel.value == null
+                ? const CircularProgressIndicator(color: colorText)
+                : Stack(alignment: AlignmentDirectional.center, children: [
+                    CircleAvatar(
+                      radius: size.width / 3,
+                      backgroundColor: Colors.grey[800],
+                    ),
+                    DownloadsImage(
+                      imageUrl: downloadImagesModel.value!.imageUrl1,
+                      size: size.width / 3.5,
+                      angle: -20 * pi / 180,
+                      horizontal: -size.width / 4.5,
+                      vertical: 10,
+                    ),
+                    DownloadsImage(
+                      imageUrl: downloadImagesModel.value!.imageUrl2,
+                      size: size.width / 3.5,
+                      angle: 20 * pi / 180,
+                      horizontal: size.width / 4.5,
+                      vertical: 10,
+                    ),
+                    DownloadsImage(
+                      imageUrl: downloadImagesModel.value!.imageUrl3,
+                      size: size.width / 2.8,
+                    ),
+                  ]),
           ),
-          DownloadsImage(
-            imageUrl: _imageUrls[2],
-            size: size.width / 3.5,
-            angle: -20 * pi / 180,
-            horizontal: -size.width / 4.5,
-            vertical: 10,
-          ),
-          DownloadsImage(
-            imageUrl: _imageUrls[1],
-            size: size.width / 3.5,
-            angle: 20 * pi / 180,
-            horizontal: size.width / 4.5,
-            vertical: 10,
-          ),
-          DownloadsImage(
-            imageUrl: _imageUrls[0],
-            size: size.width / 2.8,
-          ),
-        ]),
-      ),
-    );
+        ));
   }
 }
 

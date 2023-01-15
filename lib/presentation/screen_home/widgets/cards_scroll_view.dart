@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/presentation_constants.dart';
 
 import 'package:netflix_ui/presentation/widgets/Widget_title.dart';
 import 'package:netflix_ui/presentation/widgets/poster_card.dart';

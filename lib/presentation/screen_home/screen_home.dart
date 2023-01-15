@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-
-import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/cards_scroll_view.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/home_screen_app_bar.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/home_screen_main_poster.dart';

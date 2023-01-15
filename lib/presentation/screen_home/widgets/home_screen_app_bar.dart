@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/colors.dart';
-import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/presentation_constants.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({
