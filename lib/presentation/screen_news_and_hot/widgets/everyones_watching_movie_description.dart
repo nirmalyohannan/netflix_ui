@@ -4,6 +4,7 @@ import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/data/screen_new_and_hot/movies_list_model.dart';
 import 'package:pod_player/pod_player.dart';
+import 'package:share_plus/share_plus.dart';
 
 class EveryonesWatchingMovieDescription extends StatefulWidget {
   const EveryonesWatchingMovieDescription({
@@ -55,7 +56,9 @@ class _EveryonesWatchingMovieDescriptionState
         //   placeholderWidth: size.width,
         //   placeholderHeight: 200,
         // ),
-        PodVideoPlayer(controller: videoController),
+        PodVideoPlayer(
+          controller: videoController,
+        ),
         kGapHeight20,
         Row(
           children: [
@@ -71,7 +74,9 @@ class _EveryonesWatchingMovieDescriptionState
               iconData: Icons.send_outlined,
               iconSize: 30,
               title: "Share",
-              onPressed: () {},
+              onPressed: () {
+                Share.share(widget.trailerUrl);
+              },
             ),
             kGapWidth10,
             _VerticalIconButton(
