@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/data/screen_new_and_hot/coming_soon_movies_model.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class ComingSoonMovieDescription extends StatelessWidget {
-  const ComingSoonMovieDescription({
-    Key? key,
-  }) : super(key: key);
+  const ComingSoonMovieDescription({Key? key, required this.data})
+      : super(key: key);
+
+  final MovieModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +16,11 @@ class ComingSoonMovieDescription extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _LeftSideDateSection(width: 30),
+        _LeftSideDateSection(width: 30, data: data),
         kGapWidth10,
         _RightSideMovieSection(
-            width: size.width - 30 - 30) //remaining space for the section
+            width: size.width - 30 - 30,
+            data: data) //remaining space for the section
       ],
     );
   }
@@ -27,9 +30,11 @@ class _RightSideMovieSection extends StatelessWidget {
   const _RightSideMovieSection({
     Key? key,
     required this.width,
+    required this.data,
   }) : super(key: key);
 
   final double width;
+  final MovieModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,7 @@ class _RightSideMovieSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomNetworkImage(
-            "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/9ijMGlJKqcslswWUzTEwScm82Gs.jpg",
+            data.imageUrl,
             width: width,
             placeholderHeight: 200,
           ),
@@ -48,7 +53,7 @@ class _RightSideMovieSection extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Mandalorian",
+                  data.movieName,
                   style: TextStyle(
                       fontSize: kFontSizeMovieTitle,
                       fontWeight: FontWeight.bold),
@@ -67,15 +72,16 @@ class _RightSideMovieSection extends StatelessWidget {
               kGapWidth10,
             ],
           ),
+          kGapHeight10,
           const Text("Coming on Friday"),
           kGapHeight10,
-          const Text(
-            "Mandalorian",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Text(
+            data.movieName,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           kGapHeight10,
-          const Text(
-            "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
+          Text(
+            data.descriptions,
           )
         ],
       ),
@@ -111,8 +117,13 @@ class _VerticalIconButton extends StatelessWidget {
 }
 
 class _LeftSideDateSection extends StatelessWidget {
-  const _LeftSideDateSection({Key? key, required this.width}) : super(key: key);
+  const _LeftSideDateSection({
+    Key? key,
+    required this.width,
+    required this.data,
+  }) : super(key: key);
   final double width;
+  final MovieModel data;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -120,18 +131,19 @@ class _LeftSideDateSection extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "FEB",
+            data.releaseDate.month,
             style: TextStyle(
                 fontSize: kFontSizeHeadLine1 - 8,
+                letterSpacing: -1,
                 fontWeight: FontWeight.bold,
                 color: colorTextGrey),
           ),
           Text(
-            "14",
+            data.releaseDate.date,
             style: TextStyle(
-              fontSize: kFontSizeAppBarTitle - 4,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: kFontSizeAppBarTitle - 6,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -1),
           )
         ],
       ),

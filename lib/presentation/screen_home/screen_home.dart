@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/logic/screen_home/get_south_Indian_movies.dart';
+import 'package:netflix_ui/logic/screen_home/get_tense_dramas.dart';
 import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
 import 'package:netflix_ui/logic/screen_home/loop_main_poster.dart';
@@ -39,16 +41,22 @@ class ScreenHome extends StatelessWidget {
                       imageUrl: mainPosterUrl.value,
                     ),
                     // const CardsScrollView(title: "Released in the Past Year"),
+                    CardsScrollView(
+                      title: "Trending Now",
+                      data: trendingNowModel.value,
+                    ),
                     NumberCardsScrollView(
                       title: "Top 10 Indian TV Show",
                       data: top10TvShows.value,
                     ),
                     CardsScrollView(
-                      title: "Trending Now",
-                      data: trendingNowModel.value,
+                      title: "Tense Dramas",
+                      data: tenseDramasModel.value,
                     ),
-                    // const CardsScrollView(title: "Tense Dramas"),
-                    // const CardsScrollView(title: "South Indian Cinemas"),
+                    CardsScrollView(
+                      title: "South Indian Cinemas",
+                      data: southIndianMoviesModel.value,
+                    ),
                     kGapHeight10,
                   ],
                 ),
