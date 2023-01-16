@@ -13,7 +13,6 @@ class ComingSoonTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    getComingSoonMoviesData();
     return Padding(
       padding: kPaddingAll10,
       child: ListView.separated(
@@ -26,7 +25,7 @@ class ComingSoonTabView extends StatelessWidget {
                           placeholderWidth: size.width),
                     )
                   : ComingSoonMovieDescription(
-                      data: comingSoonMoviesData.value!.movieModels[index])),
+                      data: comingSoonMoviesData.value!.movieModelList[index])),
           separatorBuilder: (context, index) => kGapHeight10,
           itemCount: 10),
     );

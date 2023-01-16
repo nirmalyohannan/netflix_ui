@@ -7,6 +7,8 @@ import 'package:netflix_ui/logic/screen_home/get_tense_dramas.dart';
 import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
 import 'package:netflix_ui/logic/screen_home/loop_main_poster.dart';
+import 'package:netflix_ui/logic/screen_new_and_hot/get_coming_soon_movies.dart';
+import 'package:netflix_ui/logic/screen_new_and_hot/get_everyones_watching_movies.dart';
 import 'package:netflix_ui/presentation/screen_main/screen_main.dart';
 
 void main() {
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
     loopMainPoster();
     getTenseDramasData();
     getSouthIndianMoviesData();
+    getComingSoonMoviesData();
+    getEveryonesWatchingMoviesData();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

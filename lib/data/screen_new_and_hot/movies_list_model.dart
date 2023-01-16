@@ -1,14 +1,15 @@
 import 'package:netflix_ui/core/tmdb_api_url.dart';
 
-class ComingSoonMoviesModel {
-  List<MovieModel> movieModels = [];
+class MoviesListModel {
+  List<MovieModel> movieModelList = [];
 
-  ComingSoonMoviesModel(this.movieModels);
+  MoviesListModel(this.movieModelList);
 
-  ComingSoonMoviesModel.fromJson(Map<String, dynamic> json) {
+  MoviesListModel.fromJson(Map<String, dynamic> json) {
     for (int index = 0; index < json["results"].length; index++) {
-      movieModels.add(
+      movieModelList.add(
         MovieModel(
+          json["results"][index]["id"].toString(),
           json["results"][index]["title"],
           "${TmdbApiUrl.imageBaseUrl}${json["results"][index]["backdrop_path"]}",
           json["results"][index]["overview"],
@@ -20,12 +21,13 @@ class ComingSoonMoviesModel {
 }
 
 class MovieModel {
+  String id;
   String imageUrl;
   String movieName;
   String descriptions;
   ReleaseDate releaseDate;
-  MovieModel(
-      this.movieName, this.imageUrl, this.descriptions, this.releaseDate);
+  MovieModel(this.id, this.movieName, this.imageUrl, this.descriptions,
+      this.releaseDate);
 }
 
 class ReleaseDate {
