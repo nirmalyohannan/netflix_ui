@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:netflix_ui/core/tmdb_api_url.dart';
 
-import 'package:netflix_ui/data/screen_new_and_hot/movies_list_model.dart';
+import 'package:netflix_ui/data/model/movies_list_model.dart';
 
 //:::::::::::::::;
 Rx<MoviesListModel?> comingSoonMoviesData = Rxn<MoviesListModel?>();

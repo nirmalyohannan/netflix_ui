@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
-import 'package:netflix_ui/data/screen_new_and_hot/movies_list_model.dart';
+import 'package:netflix_ui/data/model/movies_list_model.dart';
 import 'package:pod_player/pod_player.dart';
 import 'package:share_plus/share_plus.dart';
 

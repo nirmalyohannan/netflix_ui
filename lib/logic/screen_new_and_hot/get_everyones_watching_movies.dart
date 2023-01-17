@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:netflix_ui/core/api_key.dart';
 import 'package:netflix_ui/core/tmdb_api_url.dart';
 
-import 'package:netflix_ui/data/screen_new_and_hot/movies_list_model.dart';
+import 'package:netflix_ui/data/model/movies_list_model.dart';
 
 //:::::::::::::::;
 Rx<MoviesListModel?> everyonesWatchingMoviesData = Rxn<MoviesListModel?>();
@@ -14,7 +14,7 @@ var trailerUrlList = [].obs;
 //::::::::
 void getEveryonesWatchingMoviesData() async {
   try {
-    var response = await http.get(Uri.parse(TmdbApiUrl.popularMoviesUrl));
+    var response = await http.get(Uri.parse(TmdbApiUrl.nowPlayingUrl));
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
       MoviesListModel moviesListModel = MoviesListModel.fromJson(json);

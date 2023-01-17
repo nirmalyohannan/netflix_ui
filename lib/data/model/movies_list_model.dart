@@ -12,8 +12,10 @@ class MoviesListModel {
           json["results"][index]["id"].toString(),
           json["results"][index]["title"],
           "${TmdbApiUrl.imageBaseUrl}${json["results"][index]["backdrop_path"]}",
+          "${TmdbApiUrl.imageBaseUrl}${json["results"][index]["poster_path"]}",
           json["results"][index]["overview"],
-          ReleaseDate.fromString(json["results"][index]["release_date"]),
+          ReleaseDate.fromString(json["results"][index]["release_date"] ??
+              json["results"][index]["first_air_date"]),
         ),
       );
     }
@@ -23,11 +25,18 @@ class MoviesListModel {
 class MovieModel {
   String id;
   String imageUrl;
+  String posterUrl;
   String movieName;
   String descriptions;
   ReleaseDate releaseDate;
-  MovieModel(this.id, this.movieName, this.imageUrl, this.descriptions,
-      this.releaseDate);
+  MovieModel(
+    this.id,
+    this.movieName,
+    this.imageUrl,
+    this.posterUrl,
+    this.descriptions,
+    this.releaseDate,
+  );
 }
 
 class ReleaseDate {
@@ -48,10 +57,16 @@ class ReleaseDate {
     "NOV",
     "DEC"
   ];
-  ReleaseDate.fromString(String yyMmDd) {
-    List temp = yyMmDd.split("-");
-    year = temp[0];
-    month = _months[int.parse(temp[1]) - 1];
-    date = temp[2];
+  ReleaseDate.fromString(String? yyMmDd) {
+    if (yyMmDd != null) {
+      List temp = yyMmDd.split("-");
+      year = temp[0];
+      month = _months[int.parse(temp[1]) - 1];
+      date = temp[2];
+    } else {
+      year = "N/A";
+      month = "N/A";
+      date = "N/A";
+    }
   }
 }

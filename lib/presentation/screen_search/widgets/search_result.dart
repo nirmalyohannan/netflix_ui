@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
+import 'package:netflix_ui/data/model/movies_list_model.dart';
+import 'package:netflix_ui/data/screen_search/search_list_model.dart';
 import 'package:netflix_ui/presentation/widgets/poster_card.dart';
 import 'package:netflix_ui/presentation/widgets/widget_title.dart';
 
 class WidgetSearchResult extends StatelessWidget {
-  const WidgetSearchResult({super.key});
+  const WidgetSearchResult({
+    super.key,
+    required this.data,
+  });
 
+  final List<SearchMovieModel> data;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,11 +28,8 @@ class WidgetSearchResult extends StatelessWidget {
               crossAxisSpacing: 8,
               mainAxisSpacing: 8,
               childAspectRatio: 2 / 3,
-              children: List.generate(
-                  10,
-                  (index) => const PosterCard(
-                      imageUrl:
-                          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg")),
+              children: List.generate(data.length,
+                  (index) => PosterCard(imageUrl: data[index].posterUrl)),
             ),
           )
         ],
