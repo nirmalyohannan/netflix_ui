@@ -28,6 +28,7 @@ class NumberedPosterCard extends StatelessWidget {
         ),
         Positioned(
           left: 0,
+          bottom: 20,
           child: Stack(
             children: [
               Text(

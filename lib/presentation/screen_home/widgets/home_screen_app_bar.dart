@@ -1,46 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:netflix_ui/core/assets.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/profile_picture.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
-  const HomeScreenAppBar({
-    Key? key,
-    required this.scrollNotifier,
-  }) : super(key: key);
-
-  final RxBool scrollNotifier;
+  const HomeScreenAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => scrollNotifier.value
-        ? Container(
-            // color: Colors.black,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black,
-                Colors.black,
-                Colors.black.withOpacity(0),
-              ],
-            )),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const HomeScreenAppBarSection1(),
-                kGapHeight10,
-                const HomeScreenAppBarSection2(),
-                kGapHeight20,
-                kGapHeight20,
-                kGapHeight20,
-              ],
-            ),
-          )
-        : const SizedBox());
+    return Container(
+      // color: Colors.black,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Colors.black,
+          Colors.black,
+          Colors.black.withOpacity(0),
+        ],
+      )),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const HomeScreenAppBarSection1(),
+          kGapHeight10,
+          const HomeScreenAppBarSection2(),
+          kGapHeight20,
+          kGapHeight20,
+          kGapHeight20,
+        ],
+      ),
+    );
   }
 }
 
