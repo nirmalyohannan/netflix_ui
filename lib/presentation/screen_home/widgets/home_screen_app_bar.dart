@@ -77,9 +77,9 @@ class HomeScreenAppBarSection2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
+      children: [
         Text(
           "TV Shows",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -101,8 +101,8 @@ class CatergoriesDropDownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
+    return const Row(
+      children: [
         Text(
           "Categories",
           style: TextStyle(fontWeight: FontWeight.bold),

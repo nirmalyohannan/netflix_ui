@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/data/model/movies_list_model.dart';
-import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
 import 'package:netflix_ui/logic/screen_new_and_hot/get_everyones_watching_movies.dart';
 import 'package:netflix_ui/presentation/widgets/shimmer_card.dart';
 import 'package:netflix_ui/presentation/widgets/widget_title.dart';

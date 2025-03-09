@@ -48,9 +48,9 @@ class _HomeScreenMainPosterBottomOptions extends StatelessWidget {
           Colors.black,
         ],
       )),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [_MyListButton(), _PlayButton(), _InfoButton()],
+        children: [_MyListButton(), _PlayButton(), _InfoButton()],
       ),
     );
   }
@@ -63,9 +63,9 @@ class _InfoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         Icon(
           Icons.info_outline,
           color: colorIcon,
@@ -86,8 +86,8 @@ class _PlayButton extends StatelessWidget {
     return MaterialButton(
       color: colorButtonWhite,
       onPressed: () {},
-      child: Row(
-        children: const [
+      child: const Row(
+        children: [
           Icon(
             Icons.play_arrow,
             size: 30,
@@ -109,9 +109,9 @@ class _MyListButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         Icon(
           Icons.add,
           color: colorIcon,

@@ -33,15 +33,7 @@ class _VideoListItemState extends State<VideoListItem> {
   }
 
   @override
-  void dispose() {
-    videoController.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Stack(
       children: [
         PodVideoPlayer(

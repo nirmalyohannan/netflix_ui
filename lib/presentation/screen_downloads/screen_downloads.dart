@@ -9,7 +9,7 @@ import 'package:netflix_ui/presentation/widgets/custom_app_bar.dart';
 import 'package:netflix_ui/presentation/widgets/custom_network_image.dart';
 
 class ScreenDownloads extends StatelessWidget {
-  ScreenDownloads({super.key});
+  const ScreenDownloads({super.key});
 
   @override
   Widget build(BuildContext context) {

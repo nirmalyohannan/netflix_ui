@@ -47,7 +47,6 @@ class _EveryonesWatchingMovieDescriptionState
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -107,7 +106,7 @@ class _EveryonesWatchingMovieDescriptionState
         kGapHeight10,
         Text(
           widget.movieModel.movieName,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         kGapHeight10,
         Text(

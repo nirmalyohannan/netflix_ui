@@ -35,11 +35,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
-          backgroundColor: colorBackground,
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: colorBackground, surface: colorBackground),
           scaffoldBackgroundColor: colorBackground,
           textTheme: const TextTheme(
-              bodyText1: TextStyle(color: colorText),
-              bodyText2: TextStyle(color: colorText))),
+            bodySmall: TextStyle(color: colorText),
+            bodyLarge: TextStyle(color: colorText),
+            bodyMedium: TextStyle(color: colorText),
+          )),
       home: ScreenMain(),
     );
   }

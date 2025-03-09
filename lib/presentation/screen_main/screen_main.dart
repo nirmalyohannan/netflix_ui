@@ -18,7 +18,7 @@ class ScreenMain extends StatelessWidget {
     const ScreenNewsAndHot(),
     const ScreenFastLaughs(),
     const ScreenSearch(),
-    ScreenDownloads()
+    const ScreenDownloads()
   ];
 
   @override
