@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:netflix_ui/core/assets.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/presentation/screen_home/widgets/profile_picture.dart';
@@ -52,8 +53,8 @@ class HomeScreenAppBarSection1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.network(
-          "https://www.freepnglogos.com/uploads/netflix-logo-circle-png-5.png",
+        Image.asset(
+          Assets.images.logo,
           height: 50,
         ),
         const Spacer(),

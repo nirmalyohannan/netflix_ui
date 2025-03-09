@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/data/model/movies_list_model.dart';
-import 'package:pod_player/pod_player.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:video_player/video_player.dart';
 
 class EveryonesWatchingMovieDescription extends StatefulWidget {
   const EveryonesWatchingMovieDescription({
@@ -23,18 +23,20 @@ class EveryonesWatchingMovieDescription extends StatefulWidget {
 
 class _EveryonesWatchingMovieDescriptionState
     extends State<EveryonesWatchingMovieDescription> {
-  late final PodPlayerController videoController;
+  late final VideoPlayerController videoController;
 
   @override
   void initState() {
-    videoController = PodPlayerController(
-        playVideoFrom: PlayVideoFrom.youtube(
-          widget.trailerUrl,
-        ),
-        podPlayerConfig: const PodPlayerConfig(autoPlay: false))
-      ..initialise();
+    // videoController = PodPlayerController(
+    //     playVideoFrom: PlayVideoFrom.youtube(
+    //       widget.trailerUrl,
+    //     ),
+    //     podPlayerConfig: const PodPlayerConfig(autoPlay: false))
+    //   ..initialise();
 
-    videoController.hideOverlay();
+    videoController =
+        VideoPlayerController.networkUrl(Uri.dataFromString(widget.trailerUrl))
+          ..initialize().then((value) => videoController.play());
 
     super.initState();
   }
@@ -55,9 +57,7 @@ class _EveryonesWatchingMovieDescriptionState
         //   placeholderWidth: size.width,
         //   placeholderHeight: 200,
         // ),
-        PodVideoPlayer(
-          controller: videoController,
-        ),
+        VideoPlayer(videoController),
         kGapHeight20,
         Row(
           children: [
@@ -86,17 +86,17 @@ class _EveryonesWatchingMovieDescriptionState
             ),
             kGapWidth10,
             _VerticalIconButton(
-              iconData: videoController.isVideoPlaying
+              iconData: videoController.value.isPlaying
                   ? CupertinoIcons.pause_fill
                   : CupertinoIcons.play_arrow_solid,
               iconSize: 30,
-              title: videoController.isVideoPlaying ? "Pause" : "Play",
+              title: videoController.value.isPlaying ? "Pause" : "Play",
               onPressed: () {
                 setState(() {
-                  videoController.isVideoPlaying
+                  videoController.value.isPlaying
                       ? videoController.pause()
                       : videoController.play();
-                  videoController.hideOverlay();
+                  // videoController.hideOverlay();
                 });
               },
             ),
