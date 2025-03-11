@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+// import 'package:pod_player/pod_player.dart';
+
 class MuteUnmuteButton extends StatefulWidget {
   const MuteUnmuteButton({
     Key? key,
@@ -20,10 +22,10 @@ class _MuteUnmuteButtonState extends State<MuteUnmuteButton> {
       onTap: () {
         setState(() {
           if (widget.videoController.value.volume == 0) {
-            widget.videoController.setVolume(1);
+            widget.videoController.setVolume(1.0); //unmute();
             iconData = Icons.volume_up_outlined;
           } else {
-            widget.videoController.setVolume(0);
+            widget.videoController.setVolume(0.0); //mute();
             iconData = Icons.volume_off_outlined;
           }
         });

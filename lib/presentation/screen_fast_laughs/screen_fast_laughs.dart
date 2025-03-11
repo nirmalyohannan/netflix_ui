@@ -7,11 +7,11 @@ class ScreenFastLaughs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const shortsUrl = [
-      "https://www.youtube.com/shorts/TzXkS9QPjPY",
-      "https://www.youtube.com/shorts/ID72C7jsOAA",
-      "https://www.youtube.com/shorts/BM_JQ4AL8gc",
+      "https://www.youtube.com/shorts/4URquCDcmAo",
+      "https://www.youtube.com/shorts/AZK3uOBgHzQ",
+      "https://www.youtube.com/watch?v=HSCymCubvhk",
       "https://www.youtube.com/watch?v=0jKoQcZOwTw",
-      "https://www.youtube.com/shorts/9zgZO3EFmNw",
+      "https://www.youtube.com/shorts/ID72C7jsOAA",
       "https://www.youtube.com/shorts/Ob8-HJ7uh7s",
     ];
     return PageView(

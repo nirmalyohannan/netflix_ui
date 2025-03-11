@@ -41,6 +41,8 @@ dependencies:
   shimmer: ^3.0.0
   cached_network_image: 
   http: ^1.2.2
+  youtube_explode_dart: ^2.3.10
+  path_provider: ^2.1.4
   video_player: ^2.9.2
   share_plus: 
 

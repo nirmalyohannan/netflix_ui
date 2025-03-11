@@ -21,12 +21,12 @@ class HomeScreenMainPoster extends StatelessWidget {
           children: [
             mainPosterUrl.value == null
                 ? ShimmerCard(
-                    placeholderHeight: 800, placeholderWidth: size.width)
+                    placeholderHeight: 600, placeholderWidth: size.width)
                 : CustomNetworkImage(
                     mainPosterUrl.value!,
                     width: size.width,
                     fit: BoxFit.cover,
-                    placeholderHeight: 400,
+                    placeholderHeight: 600,
                   ),
             const _HomeScreenMainPosterBottomOptions()
           ],
