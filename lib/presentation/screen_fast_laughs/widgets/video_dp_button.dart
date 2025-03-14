@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class VideoDpButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class VideoDpButton extends StatelessWidget {
       elevation: 8,
       shadowColor: Colors.black,
       child: CircleAvatar(
-        foregroundImage: NetworkImage(imageUrl),
+        foregroundImage: CachedNetworkImageProvider(imageUrl),
         radius: 25,
       ),
     );
