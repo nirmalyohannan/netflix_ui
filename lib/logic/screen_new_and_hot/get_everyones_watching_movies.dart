@@ -18,6 +18,8 @@ void getEveryonesWatchingMoviesData() async {
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
       MoviesListModel moviesListModel = MoviesListModel.fromJson(json);
+      moviesListModel.movieModelList
+          .removeWhere((element) => element.imageUrl.contains("null"));
       everyonesWatchingMoviesData.value = moviesListModel;
       //::::::::::::::::::::::::::::::::
       for (var element in moviesListModel.movieModelList) {
@@ -27,9 +29,12 @@ void getEveryonesWatchingMoviesData() async {
 
         if (response.statusCode == 200) {
           var json = jsonDecode(response.body);
-          String key = json["results"][0]["key"];
-          String trailerUrl = "${TmdbApiUrl.youtubeBaseUrl}$key";
-          trailerUrlList.add(trailerUrl);
+          List results = json["results"];
+          if (results.isNotEmpty) {
+            String key = json["results"][0]["key"];
+            String trailerUrl = "${TmdbApiUrl.youtubeBaseUrl}$key";
+            trailerUrlList.add(trailerUrl);
+          }
         }
       }
     }

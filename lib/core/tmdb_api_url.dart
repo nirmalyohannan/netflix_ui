@@ -10,6 +10,6 @@ class TmdbApiUrl {
   static const topRatedMoviesUrls = "$baseUrl/movie/top_rated?api_key=$apiKey";
   static const upcomingMoviesUrl = "$baseUrl/movie/upcoming?api_key=$apiKey";
   static const popularMoviesUrl = "$baseUrl/movie/popular?api_key=$apiKey";
-  static const nowPlayingUrl = "$baseUrl/movie//now_playing?api_key=$apiKey";
+  static const nowPlayingUrl = "$baseUrl/movie/now_playing?api_key=$apiKey";
   static const searchBaseUrl = "$baseUrl/search/multi?api_key=$apiKey&query=";
 }

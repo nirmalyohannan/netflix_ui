@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/colors.dart';
@@ -64,11 +65,16 @@ class TopSearchTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            data.imageUrl,
-            width: size.width / 2.5,
-            fit: BoxFit.cover,
-          ),
+          child: Builder(builder: (context) {
+            return CachedNetworkImage(
+              imageUrl: data.imageUrl,
+              width: size.width / 2.5,
+              fit: BoxFit.cover,
+              errorWidget: (context, url, error) {
+                return const Text("Failed To Load Image");
+              },
+            );
+          }),
         ),
         kGapWidth10,
         Expanded(

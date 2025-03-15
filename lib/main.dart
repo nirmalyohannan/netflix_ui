@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitUp
     ]); //To turn off screen rotation for the app
     getTrendingNowData();
     getTop10TvShows();

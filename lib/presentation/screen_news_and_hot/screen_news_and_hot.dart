@@ -16,7 +16,6 @@ class ScreenNewsAndHot extends StatelessWidget {
             preferredSize: Size.fromHeight(100),
             child: CustomAppBar(
               title: "New and Hot",
-              // bottom: _CustomTabBar(selectedTab: selectedTab),
               bottom: NewAndHotTabBar(),
             ),
           ),

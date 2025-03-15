@@ -15,7 +15,10 @@ void getComingSoonMoviesData() async {
     var response = await http.get(Uri.parse(TmdbApiUrl.upcomingMoviesUrl));
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
-      comingSoonMoviesData.value = MoviesListModel.fromJson(json);
+      var moviesListModel = MoviesListModel.fromJson(json);
+      moviesListModel.movieModelList
+          .removeWhere((element) => element.imageUrl.contains("null"));
+      comingSoonMoviesData.value = moviesListModel;
     }
   } catch (e) {
     log("getComingSoonMoviesData: Failed to load Data!");

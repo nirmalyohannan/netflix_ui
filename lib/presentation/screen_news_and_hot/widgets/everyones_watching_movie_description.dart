@@ -1,8 +1,13 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/data/model/movies_list_model.dart';
+import 'package:netflix_ui/logic/fetch_from_youtube.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
@@ -23,28 +28,41 @@ class EveryonesWatchingMovieDescription extends StatefulWidget {
 
 class _EveryonesWatchingMovieDescriptionState
     extends State<EveryonesWatchingMovieDescription> {
-  late final VideoPlayerController videoController;
+  VideoPlayerController? videoController;
+  String? thumbnailUrl;
 
   @override
   void initState() {
-    // videoController = PodPlayerController(
-    //     playVideoFrom: PlayVideoFrom.youtube(
-    //       widget.trailerUrl,
-    //     ),
-    //     podPlayerConfig: const PodPlayerConfig(autoPlay: false))
-    //   ..initialise();
-
-    videoController =
-        VideoPlayerController.networkUrl(Uri.dataFromString(widget.trailerUrl))
-          ..initialize().then((value) => videoController.play());
-
+    try {
+      fetchFromYoutube(
+        url: widget.trailerUrl,
+        skipFetchIfExistsInCache: true,
+        onVideoBufferFinished: (videoFile) => setState(() => videoController =
+            VideoPlayerController.file(videoFile)..initialize()),
+      );
+    } catch (e) {
+      log(e.toString());
+    }
     super.initState();
   }
 
   @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
   void dispose() {
-    videoController.dispose();
+    videoController?.dispose();
     super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    videoController?.pause();
+    super.deactivate();
   }
 
   @override
@@ -52,12 +70,29 @@ class _EveryonesWatchingMovieDescriptionState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // CustomNetworkImage(
-        //   "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/33j33midGw49BBxiqlNZeZ6PZ0O.jpg",
-        //   placeholderWidth: size.width,
-        //   placeholderHeight: 200,
-        // ),
-        VideoPlayer(videoController),
+        AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Builder(builder: (context) {
+            if (videoController == null) {
+              return Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: widget.movieModel.imageUrl,
+                    height: MediaQuery.of(context).size.height / 3,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  const Center(child: CircularProgressIndicator()),
+                ],
+              );
+            }
+            return InkWell(
+                onTap: () => videoController!.value.isPlaying
+                    ? videoController!.pause()
+                    : videoController!.play(),
+                child: VideoPlayer(videoController!));
+          }),
+        ),
         kGapHeight20,
         Row(
           children: [
@@ -85,21 +120,24 @@ class _EveryonesWatchingMovieDescriptionState
               onPressed: () {},
             ),
             kGapWidth10,
-            _VerticalIconButton(
-              iconData: videoController.value.isPlaying
-                  ? CupertinoIcons.pause_fill
-                  : CupertinoIcons.play_arrow_solid,
-              iconSize: 30,
-              title: videoController.value.isPlaying ? "Pause" : "Play",
-              onPressed: () {
-                setState(() {
-                  videoController.value.isPlaying
-                      ? videoController.pause()
-                      : videoController.play();
-                  // videoController.hideOverlay();
-                });
-              },
-            ),
+            if (videoController != null)
+              ListenableBuilder(
+                  listenable: videoController!,
+                  builder: (context, child) {
+                    return _VerticalIconButton(
+                      iconData: videoController!.value.isPlaying
+                          ? CupertinoIcons.pause_fill
+                          : CupertinoIcons.play_arrow_solid,
+                      iconSize: 30,
+                      title:
+                          videoController!.value.isPlaying ? "Pause" : "Play",
+                      onPressed: () {
+                        videoController!.value.isPlaying
+                            ? videoController!.pause()
+                            : videoController!.play();
+                      },
+                    );
+                  }),
             kGapWidth10,
           ],
         ),
