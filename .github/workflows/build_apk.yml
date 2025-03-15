@@ -1,0 +1,45 @@
+name: Build Flutter APKs (ABI Split)
+
+# Controls when the workflow will run (Trigger)
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main # Trigger the workflow on pull request to the main branch
+
+jobs:
+  build_apk:
+    runs-on: ubuntu-latest # Use the latest version of Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17' # Version of Java to use
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.6' # Version of Flutter to use
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Inject API Key
+        run: |
+          echo "const String apiKey = '${{ secrets.API_KEY }}';" > lib/core/api_key.dart
+
+      - name: Build APKs (ABI Split)
+        run: flutter build apk --split-per-abi
+
+      - name: Upload APKs
+        uses: actions/upload-artifact@v3
+        with:
+          name: apk-release
+          path: build/app/outputs/flutter-apk/app-*.apk
