@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
 import 'package:netflix_ui/data/screen_home/card_scroll_view_model.dart';
-import 'package:netflix_ui/presentation/widgets/Widget_title.dart';
+import 'package:netflix_ui/presentation/widgets/widget_title.dart';
 import 'package:netflix_ui/presentation/widgets/poster_card.dart';
 import 'package:netflix_ui/presentation/widgets/shimmer_card.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:netflix_ui/core/presentation_constants.dart';
-import 'package:netflix_ui/logic/screen_home/get_south_Indian_movies.dart';
+import 'package:netflix_ui/logic/screen_home/get_south_indian_movies.dart';
 import 'package:netflix_ui/logic/screen_home/get_tense_dramas.dart';
 import 'package:netflix_ui/logic/screen_home/get_top10_tv_shows.dart';
 import 'package:netflix_ui/logic/screen_home/get_trending_now.dart';
