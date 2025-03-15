@@ -36,10 +36,21 @@ jobs:
           echo "const String apiKey = '${{ secrets.API_KEY }}';" > lib/core/api_key.dart
 
       - name: Build APKs (ABI Split)
-        run: flutter build apk --split-per-abi
+        run: flutter build apk --release --split-per-abi
 
       - name: Upload APKs
         uses: actions/upload-artifact@v4
         with:
           name: apk-release
           path: build/app/outputs/flutter-apk/app-*.apk
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/app/outputs/flutter-apk/app-*.apk
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            Automatically generated release for ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
